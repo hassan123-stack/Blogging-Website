@@ -5,7 +5,7 @@
   "scripts": {
     "lint:html": "htmlhint src/**/*.html",
     "lint:css": "stylelint style/**/*.css",
-    "build": "parcel build src/Homepage.html"
+    "build": "parcel build src/index.html"
   },
   "author": "",
   "license": "ISC",
