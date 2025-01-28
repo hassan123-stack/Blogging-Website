@@ -2,7 +2,6 @@
   "name": "blogging-website",
   "version": "1.0.0",
   "description": "A blogging website with CI/CD and linting setup",
-  "main": "src/Homepage.html",
   "scripts": {
     "lint:html": "htmlhint src/**/*.html",
     "lint:css": "stylelint style/**/*.css",
