@@ -1,11 +1,16 @@
 {
   "name": "blogging-website",
   "version": "1.0.0",
-  "description": "",
+  "description": "A blogging website with CI/CD and linting setup",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint:html": "htmlhint src/**/*.html",
+    "lint:css": "stylelint styles/**/*.css",
+    "build": "parcel build src/index.html"
   },
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "htmlhint": "^0.16.3",
+    "stylelint": "^16.14.1",
+    "parcel": "^2.8.0"
+  }
 }
