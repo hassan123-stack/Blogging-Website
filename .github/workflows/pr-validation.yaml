@@ -46,5 +46,5 @@ jobs:
         run: npm install
 
       - name: Build Static Website
-        run: npx parcel build src/Homepage.html
+        run: npx parcel build src/index.html
 
