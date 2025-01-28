@@ -6,12 +6,13 @@ on:
       - develop  # Trigger on any push to the develop branch
 
 permissions: 
-  pages: write  # Allow deployment to GitHub Pages
-  id-token: write  # Allow authentication for deployment
+  id-token: write
+  contents: read
+  pages: write
 
 jobs:
-  deploy:
-    name: Build and Deploy to GitHub Pages
+  build:
+    name: Build Static Website
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16  # Use Node.js version 16
+          node-version: 16
 
       # Step 3: Install dependencies
       - name: Install Dependencies
@@ -33,8 +34,18 @@ jobs:
       - name: Build Static Website
         run: npx parcel build src/Homepage.html
 
-      # Step 5: Deploy the built website to GitHub Pages
+      # Step 5: Upload artifact for deployment
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/  # Ensure the output folder is correct
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build  # This ensures the build job completes first
+
+    steps:
+      # Step 6: Deploy the artifact to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
-        with:
-          path: dist/  # Deploy the 'dist' folder (output from Parcel)
