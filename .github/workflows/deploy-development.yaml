@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Build Static Website
-        run: npx parcel build src/index.html
+        run: npx parcel build src/Homepage.html
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
